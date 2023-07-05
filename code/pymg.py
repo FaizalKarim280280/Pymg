@@ -5,7 +5,7 @@ from typing import List, Tuple, Union
 
 
 def resize_image(
-        img: List[float],
+        img: np.array,
         size: Union[str, Tuple[int, int]]):
 
     """
@@ -47,7 +47,7 @@ def resize_image(
 
 
 def normalize_image(
-        img: List[float],
+        img: np.array,
         between: Tuple[float, float]):
     
     """
@@ -59,7 +59,7 @@ def normalize_image(
     
     Returns:
         list: Normalized image.
-        
+
     Example:
         >>> img = np.random.uniform(0, 255, (100, 200, 3))
         >>> img.min(), img.max()
@@ -79,16 +79,16 @@ def normalize_image(
 
 
 def load_img(
-        PATH: str,
+        path: str,
         size: Union[str, Tuple[int, int]] = 'original',
         between: Tuple[float, float] = (0, 255),
         retain_png: bool = False):
-    
+
     """
     Load image with the given path.
     
     Args:
-        PATH (str): Path of the image.
+        path (str): Path of the image.
         size (str or Tuple[int, int]): Target size of the image. Defaults to 'original'.
         between (Tuple[float, float]): Target range of the image pixels. Defaults to (0, 255).
         retain_png (bool): Retain the fourth channel of the image. Defaults to False
@@ -105,7 +105,7 @@ def load_img(
          
     """
 
-    img = plt.imread(PATH)
+    img = plt.imread(path)
 
     channels = len(img.shape)
 
@@ -126,7 +126,7 @@ def convert2gray(
         img: List[float]):
     
     """
-    Converts RGB image to grayscale
+    Converts RGB image to grayscale.
     
     Args:
         img (List[float]): The image matrix.
@@ -186,3 +186,11 @@ def discretize_mask(
     return img
 
 
+def stack_masks(
+    masks: List[List[float]]):
+    
+    """
+    
+    
+    """
+    pass
